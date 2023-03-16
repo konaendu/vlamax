@@ -3,7 +3,7 @@
 Link: https://konaendurance.com/vlamaxcalc/
 
 
-Here are the formulas I used for the calculator: 
+Here are the formulas I used for the calculator. Written in javascript:
 
 # 1. Calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
 
