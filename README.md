@@ -1,12 +1,9 @@
-# vlamax
 # VlaMax Calculator
 
 Link: https://konaendurance.com/vlamaxcalc/
 
 
-Hey folks, 
-
-here are the formulas I used for the calculator: 
+Here are the formulas I used for the calculator: 
 
 # 1. Calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
 
