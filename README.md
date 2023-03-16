@@ -1,5 +1,5 @@
 # vlamax
-VlaMax Calculator
+# VlaMax Calculator
 
 Link: https://konaendurance.com/vlamaxcalc/
 
@@ -8,7 +8,7 @@ Hey folks,
 
 here are the formulas I used for the calculator: 
 
-1. we calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
+# 1. we calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
 
 //
 const bmi = bodyMass / ((height / 100) ** 2);
@@ -29,7 +29,7 @@ VO2ss describes the steady state oxygen uptake in (ml/ kg*min) and is generated 
   
   
   
-2. We use Vo2ss with the help of Vo2Max from the input mask and go on to calculate ADP:
+# 2. We use Vo2ss with the help of Vo2Max from the input mask and go on to calculate ADP:
 
 (During exercise ATP is converted to ADP (and AMP) to yield energy. In this model the activation of glycolysis occurs in an allosteric relation to ADP and AMP. It is stated, that AMP is proportional to ADP². Therefore, ADP x AMP is equivalent to the third power of ADP. ADP and AMP must be multiplied because the activation due to AMP is amplified. Consequently, the activation of glycolysis can be calculated from ADP)
 
@@ -38,7 +38,7 @@ VO2ss describes the steady state oxygen uptake in (ml/ kg*min) and is generated 
 
 
 
-3. Now we use Michaelis-Menten Kinetic as an assumption: Describes the activity of an enzyme as a function of the substrate concentration.
+# 3. Now we use Michaelis-Menten Kinetic as an assumption: Describes the activity of an enzyme as a function of the substrate concentration.
 
 vlass with multiplier 60 to get minutes instead of seconds
 
@@ -48,7 +48,7 @@ vlass with multiplier 60 to get minutes instead of seconds
 
 
 
-4. Lactate formation and combustion
+# 4. Lactate formation and combustion
 
 As produced pyruvate (or lactate) can be combusted, the net formation rate of lactate (eg, what is measured) is the difference between produced and combusted lactate. In order to relate to the combustion of lactate, we must assess the influence of the energy charge of lactic acid formation and combustion and the distribution to the body's water compartment.  
 
@@ -62,7 +62,7 @@ We must keep in mind, that the change of the lactate distribution in tissue bloo
 
 
 
-5. In order to calculate the oxygen consumption based on the external load the anaerobic energy contribution needs to be respected. Consequently the earlier calculated lactate/pyruvate production needs to be converted into oxygen-equivalents. This method allows the definition of oxygen-demand per unit of external load.
+# 5. In order to calculate the oxygen consumption based on the external load the anaerobic energy contribution needs to be respected. Consequently the earlier calculated lactate/pyruvate production needs to be converted into oxygen-equivalents. This method allows the definition of oxygen-demand per unit of external load.
 
   // Calculate overall demand and Intensity
   const overall_demand = vLass.map((vl, index) => ((vl * (VolRel * bw) * ((1 / 4.3) * 22.4) / bw) + VO2ss[index]));
@@ -72,7 +72,7 @@ We must keep in mind, that the change of the lactate distribution in tissue bloo
 
 
 
-6. The crossing point: "Anaerobic Threshold"
+# 6. The crossing point: "Anaerobic Threshold"
 As we have indicated earlier, the actual net lactate formation can now be calculated as the difference between lactate formation and combustion (see eq. 6 and 7). In the following step all simulated values are plotted together. The crossing point between the gross lactate formation and potential lactate removal indicates the AT. Net lactate production at this point is equal to zero. Below the crossing point vLanet describes the lack of pyruvate. This displays the possible use of fatty acids as pyruvate equivalents. Therefore, the maximum lack of pyruvate represents the point of maximal fuel supply by fatty acids
 
 
@@ -91,7 +91,7 @@ As we have indicated earlier, the actual net lactate formation can now be calcul
   
   
   
-7. Macronutrient utilization
+# 7. Macronutrient utilization
 Based on the pyruvate production and lack of pyruvate rate the utilization of fatty acids and carbohydrates can be calculated. In this notebook the output unit will be g/h.
 
 The following calculations consider that 1 mol pyruvate requires 0.5 mol glucose. The weight of 1 mol glucose is 162.14 g. The calculated CarbMax value represents the velocity at which 90 g/h of glucose are combusted. Moreover 1L of oxygen produces 4.65 kcal burning fats, whereas 1 kcal has the weight of 9.5g (considering stearate as the main fatty acid used).
@@ -103,11 +103,11 @@ The following calculations consider that 1 mol pyruvate requires 0.5 mol glucose
   
   
   
-8. Steady State Lactate Concentrations
+# 8. Steady State Lactate Concentrations
 Based on the earlier described equation to calculate the AT the steady state lactate concentration for velocities below the AT can be calculated. The assumption of the steady state is that lactate production and elimination are equal. In the earlier part of this notebook the calculation for the production of lactate has already been discussed. So far the process of the invasion of pyruvate/lactate to the location of combustion (mitochondria) has been neglected. Pyruvate is converted into Acyl-CoA that can be brought into the citric acid cycle. This reaction is catalysed by the enzym pyruvatdehydrogenase (PDH). The activity of PDH consequently influences the accumulating lactate. PDH itself is activated mainly by the presence of pyruvate. The affinity of PDH towards pyruvate is dependent on the muscle fiber and described in the simulation by the constant Kel. In the original publication Mader and Heck suggested a value between 4 - 9, whereas it was assumed that Kel is 2 in a later paper. Based on these assumption the following equation holds true for the lactate concentration (CLass) below the threshold:
 
 
-# Calculating CLass below threshold 
+Calculating CLass below threshold 
 Class = np.sqrt((vLamax * Kel * 60) / (((0.01576/ VolRel) * VO2ss[0:arg_sAT]) * (1 + (Ks2 / ((Ks1 * VO2ss[0:arg_sAT]) / (VO2max - VO2ss[0:arg_sAT])) ** (3 / 2))) - (vLamax * 60)))
 
 Into Java:
@@ -128,10 +128,10 @@ function calculateSteadyStateLactate(VO2ss, vLamax, Kel, VolRel, Ks1, Ks2, VO2ma
 
 
 
-9. The rest is using google chart to plot the graphs! Thanks Rasaff57 for the input!
+# 9. The rest is using google chart to plot the graphs! Thanks Rasaff57 for the input!
 
 
-10. Adddionatl factor to improve the code: 
+# 10. Additional factor to improve the code: 
 
 Relative Lactate Distribution Space = 0.69 * Total Body Water (%), (Mader & Heck, 1986)
 
