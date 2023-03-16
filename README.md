@@ -4,7 +4,16 @@ Alpha Build March 15 23
 Link: https://konaendurance.com/vlamaxcalc/
 
 
-Here are the formulas I used for the calculator. Written in javascript:
+Here are the formulas I used for the calculator. Written in javascript.
+I used the following papers:
+
+```
+Mader, A., & Heck, H. (1986). A Theory of the Metabolic Origin of “Anaerobic Threshold”. International Journal of Sports Medicine, 07(S 1), S45-S65. https://doi.org/10.1055/s-2008-1025802
+
+Mader, A. (2003). Glycolysis and oxidative phosphorylation as a function of cytosolic phosphorylation state and power output of the muscle cell. https://doi.org/10.1007/s00421-002-0676-3
+
+Hauser, T. (2014) Comparison of calculated and experimental power in maximal lactate-steady state during cycling. https://doi.org/10.1186%2F1742-4682-11-25
+```
 
 # 1. VLaMAx & VO2ss:
 
