@@ -6,7 +6,7 @@ Link: https://konaendurance.com/vlamaxcalc/
 
 Here are the formulas I used for the calculator. Written in javascript:
 
-# 1. Calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
+# 1. VLaMAx & VO2ss:
 
 ```
 //
@@ -28,7 +28,7 @@ VO2ss describes the steady state oxygen uptake in (ml/ kg*min) and is generated 
   
   
   
-# 2. Use Vo2ss with the help of Vo2Max from the input mask and go on to calculate ADP:
+# 2. ADP:
 
 (During exercise ATP is converted to ADP (and AMP) to yield energy. In this model the activation of glycolysis occurs in an allosteric relation to ADP and AMP. It is stated, that AMP is proportional to ADP². Therefore, ADP x AMP is equivalent to the third power of ADP. ADP and AMP must be multiplied because the activation due to AMP is amplified. Consequently, the activation of glycolysis can be calculated from ADP)
 
@@ -38,7 +38,9 @@ VO2ss describes the steady state oxygen uptake in (ml/ kg*min) and is generated 
 ```
 
 
-# 3. Michaelis-Menten Kinetic as an assumption: Describes the activity of an enzyme as a function of the substrate concentration.
+# 3. Michaelis-Menten Kinetic
+
+M-Mk as an assumption: Describes the activity of an enzyme as a function of the substrate concentration.
 
 vlass with multiplier 60 to get minutes instead of seconds
 
@@ -64,7 +66,9 @@ We must keep in mind, that the change of the lactate distribution in tissue bloo
 
 
 
-# 5. In order to calculate the oxygen consumption based on the external load the anaerobic energy contribution needs to be respected. Consequently the earlier calculated lactate/pyruvate production needs to be converted into oxygen-equivalents. This method allows the definition of oxygen-demand per unit of external load.
+# 5. Overall demand
+
+In order to calculate the oxygen consumption based on the external load the anaerobic energy contribution needs to be respected. Consequently the earlier calculated lactate/pyruvate production needs to be converted into oxygen-equivalents. This method allows the definition of oxygen-demand per unit of external load.
 
 ```
   // Calculate overall demand and Intensity
@@ -75,7 +79,8 @@ We must keep in mind, that the change of the lactate distribution in tissue bloo
 
 
 
-# 6. The crossing point: "Anaerobic Threshold"
+# 6. Anaerobic Threshold
+
 As we have indicated earlier, the actual net lactate formation can now be calculated as the difference between lactate formation and combustion (see eq. 6 and 7). In the following step all simulated values are plotted together. The crossing point between the gross lactate formation and potential lactate removal indicates the AT. Net lactate production at this point is equal to zero. Below the crossing point vLanet describes the lack of pyruvate. This displays the possible use of fatty acids as pyruvate equivalents. Therefore, the maximum lack of pyruvate represents the point of maximal fuel supply by fatty acids
 
 ```
@@ -108,6 +113,7 @@ The following calculations consider that 1 mol pyruvate requires 0.5 mol glucose
   
   
 # 8. Steady State Lactate Concentrations
+
 Based on the earlier described equation to calculate the AT the steady state lactate concentration for velocities below the AT can be calculated. The assumption of the steady state is that lactate production and elimination are equal. In the earlier part of this notebook the calculation for the production of lactate has already been discussed. So far the process of the invasion of pyruvate/lactate to the location of combustion (mitochondria) has been neglected. Pyruvate is converted into Acyl-CoA that can be brought into the citric acid cycle. This reaction is catalysed by the enzym pyruvatdehydrogenase (PDH). The activity of PDH consequently influences the accumulating lactate. PDH itself is activated mainly by the presence of pyruvate. The affinity of PDH towards pyruvate is dependent on the muscle fiber and described in the simulation by the constant Kel. In the original publication Mader and Heck suggested a value between 4 - 9, whereas it was assumed that Kel is 2 in a later paper. Based on these assumption the following equation holds true for the lactate concentration (CLass) below the threshold:
 
 
