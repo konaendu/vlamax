@@ -8,7 +8,7 @@ Hey folks,
 
 here are the formulas I used for the calculator: 
 
-# 1. we calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
+# 1. Calculate VLaMAx with the help of bodyweight & height and then go on to calculate VO2ss:
 
 //
 const bmi = bodyMass / ((height / 100) ** 2);
@@ -29,7 +29,7 @@ VO2ss describes the steady state oxygen uptake in (ml/ kg*min) and is generated 
   
   
   
-# 2. We use Vo2ss with the help of Vo2Max from the input mask and go on to calculate ADP:
+# 2. Use Vo2ss with the help of Vo2Max from the input mask and go on to calculate ADP:
 
 (During exercise ATP is converted to ADP (and AMP) to yield energy. In this model the activation of glycolysis occurs in an allosteric relation to ADP and AMP. It is stated, that AMP is proportional to ADP². Therefore, ADP x AMP is equivalent to the third power of ADP. ADP and AMP must be multiplied because the activation due to AMP is amplified. Consequently, the activation of glycolysis can be calculated from ADP)
 
@@ -38,7 +38,7 @@ VO2ss describes the steady state oxygen uptake in (ml/ kg*min) and is generated 
 
 
 
-# 3. Now we use Michaelis-Menten Kinetic as an assumption: Describes the activity of an enzyme as a function of the substrate concentration.
+# 3. Michaelis-Menten Kinetic as an assumption: Describes the activity of an enzyme as a function of the substrate concentration.
 
 vlass with multiplier 60 to get minutes instead of seconds
 
