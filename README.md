@@ -1,5 +1,6 @@
 # VlaMax Calculator
 
+Alpha Build March 15 23
 Link: https://konaendurance.com/vlamaxcalc/
 
 
@@ -124,11 +125,10 @@ function calculateSteadyStateLactate(VO2ss, vLamax, Kel, VolRel, Ks1, Ks2, VO2ma
 }
 
 
+The rest is using google chart to plot the graphs! Thanks Rasaff57 for the input!
 
-# 9. The rest is using google chart to plot the graphs! Thanks Rasaff57 for the input!
 
-
-# 10. Additional factor to improve the code: 
+# 9. Additional ideas to improve the code: 
 
 Relative Lactate Distribution Space = 0.69 * Total Body Water (%), (Mader & Heck, 1986)
 
