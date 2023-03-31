@@ -158,7 +158,61 @@ function calculateSteadyStateLactate(VO2ss, vLamax, Kel, VolRel, Ks1, Ks2, VO2ma
 The rest is using google chart to plot the graphs! Thanks Rasaff57 for the input!
 
 
-# 9. Additional ideas to improve the code: 
+# 9. Calculating Glycogen Storage with the help of the fitness level and body makers
+
+This is based on the assumption that fitter athletes (lower vlamax & higher vo2max are more efficient in storing glycogen per kg muscle. The is obviously a simpflication. Therefore we use lower storage levels for beginner athletes. We assume 90g of liver storage (even tho up to 100g is possible). Lean muscle mass of 70% and body fat percantage of 14%, these are average values. I can add them to the input mask, but a lot of people don't have exact measurement, so the average sadly works best most of the times. The muscle gylcogen calc is straight forward see the code below.
+
+```java
+function estimateFitnessLevel(vo2max, vlamax) {
+  if (vo2max >= 65 && vlamax <= 0.5) {
+    return 'elite';
+  } else if (vo2max >= 50 && vlamax <= 0.7) {
+    return 'advanced';
+  } else if (vo2max >= 40 && vlamax <= 0.9) {
+    return 'intermediate';
+  } else {
+    return 'beginner';
+  }
+}
+
+function getGlycogenPerKgMuscle(fitnessLevel) {
+  switch (fitnessLevel) {
+    case 'elite':
+      return 17;
+    case 'advanced':
+      return 15;
+    case 'intermediate':
+      return 14;
+    case 'beginner':
+    default:
+      return 13;
+  }
+}
+
+
+function estimateGlycogenStorage(bodyMass, bodyFatPercentage, liverGlycogen, muscleGlycogenPercentage) {
+  const fatMass = bodyMass * bodyFatPercentage / 100;
+  const leanMass = bodyMass - fatMass;
+  const muscleMass = leanMass * muscleMassPercentage;
+  
+  const liverGlycogenStorage = liverGlycogen;
+  const muscleGlycogenStorage = muscleMass * glycogenPerKgMuscle;
+  
+  return liverGlycogenStorage + muscleGlycogenStorage;
+}
+
+
+const bodyFatPercentage = 14; // assuming 10% for men and 15% for women as a typical fit long-distance triathlete
+const liverGlycogen = 90; // assuming 90g for liver glycogen storage
+const muscleMassPercentage = 0.70; // assuming 70% of lean mass as muscle mass
+const fitnessLevel = estimateFitnessLevel(vo2max, vlamax);
+const glycogenPerKgMuscle = getGlycogenPerKgMuscle(fitnessLevel);
+
+const glycogenStorage = estimateGlycogenStorage(bodyMass, bodyFatPercentage, liverGlycogen, muscleMassPercentage, glycogenPerKgMuscle);
+
+```
+
+# 10. Additional ideas to improve the code: 
 
 Relative Lactate Distribution Space = 0.69 * Total Body Water (%), (Mader & Heck, 1986)
 
