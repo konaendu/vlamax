@@ -118,9 +118,9 @@ As we have indicated earlier, the actual net lactate formation can now be calcul
   
   
 # 7. Macronutrient utilization
-Based on the pyruvate production and lack of pyruvate rate the utilization of fatty acids and carbohydrates can be calculated. In this notebook the output unit will be g/h.
+Based on the pyruvate production and lack of pyruvate rate the utilization of fatty acids and carbohydrates can be calculated. The output unit will be g/h.
 
-The following calculations consider that 1 mol pyruvate requires 0.5 mol glucose. The weight of 1 mol glucose is 162.14 g. The calculated CarbMax value represents the velocity at which 90 g/h of glucose are combusted. Moreover 1L of oxygen produces 4.65 kcal burning fats, whereas 1 kcal has the weight of 9.5g (considering stearate as the main fatty acid used).
+The following calculations consider that 1 mol pyruvate requires 0.5 mol glucose. The weight of 1 mol glycogen is 162.14 g. The calculated CarbMax value represents the velocity at which 90 g/h of glucose are combusted. Moreover 1L of oxygen produces 4.65 kcal burning fats, whereas 1 kcal has the weight of 9.5g (considering stearate as the main fatty acid used).
 
 ```java  
   const CHO_util = vLass.slice(0, arg_sAT + 400).map(vl => (bw * VolRel) * 60 / 1000 / 2 * 162.14);
@@ -132,7 +132,7 @@ The following calculations consider that 1 mol pyruvate requires 0.5 mol glucose
   
 # 8. Steady State Lactate Concentrations
 
-Based on the earlier described equation to calculate the AT the steady state lactate concentration for velocities below the AT can be calculated. The assumption of the steady state is that lactate production and elimination are equal. In the earlier part of this notebook the calculation for the production of lactate has already been discussed. So far the process of the invasion of pyruvate/lactate to the location of combustion (mitochondria) has been neglected. Pyruvate is converted into Acyl-CoA that can be brought into the citric acid cycle. This reaction is catalysed by the enzym pyruvatdehydrogenase (PDH). The activity of PDH consequently influences the accumulating lactate. PDH itself is activated mainly by the presence of pyruvate. The affinity of PDH towards pyruvate is dependent on the muscle fiber and described in the simulation by the constant Kel. In the original publication Mader and Heck suggested a value between 4 - 9, whereas it was assumed that Kel is 2 in a later paper. Based on these assumption the following equation holds true for the lactate concentration (CLass) below the threshold:
+Based on the earlier described equation to calculate the AT the steady state lactate concentration for velocities below the AT can be calculated. The assumption of the steady state is that lactate production and elimination are equal. In the earlier part the calculation for the production of lactate has already been discussed. So far the process of the invasion of pyruvate/lactate to the location of combustion (mitochondria) has been neglected. Pyruvate is converted into Acyl-CoA that can be brought into the citric acid cycle. This reaction is catalysed by the enzym pyruvatdehydrogenase (PDH). The activity of PDH consequently influences the accumulating lactate. PDH itself is activated mainly by the presence of pyruvate. The affinity of PDH towards pyruvate is dependent on the muscle fiber and described in the simulation by the constant Kel. In the original publication Mader and Heck suggested a value between 4 - 9, whereas it was assumed that Kel is 2 in a later paper. Based on these assumption the following equation holds true for the lactate concentration (CLass) below the threshold:
 
 
 Calculating CLass below threshold 
