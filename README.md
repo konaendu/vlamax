@@ -202,7 +202,7 @@ function estimateGlycogenStorage(bodyMass, bodyFatPercentage, liverGlycogen, mus
 }
 
 
-const bodyFatPercentage = 14; // assuming 10% for men and 15% for women as a typical fit long-distance triathlete
+const bodyFatPercentage = 14; // assuming 14% avg ( for more accurate date we could assume gender difference: 10% for men and 15% for women as a typical fit long-distance triathlete )
 const liverGlycogen = 90; // assuming 90g for liver glycogen storage
 const muscleMassPercentage = 0.70; // assuming 70% of lean mass as muscle mass
 const fitnessLevel = estimateFitnessLevel(vo2max, vlamax);
