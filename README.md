@@ -1,7 +1,7 @@
 # VlaMax Calculator
 
 Alpha Build March 15 23
-Link: https://konaendurance.com/vlamaxcalc/
+Link: https://app.konaendurance.com
 
 
 Here are the formulas I used for the calculator. Written in javascript.
